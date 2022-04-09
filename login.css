@@ -1,0 +1,60 @@
+.gradient-form {
+  display: flex;
+  justify-content: center;
+}
+.logo {
+  color: brown;
+  font-size: 40px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.login {
+  margin-top: 10px;
+  color: dodgerblue;
+}
+.user {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.label {
+  color: dodgerblue;
+  font-size: 25px;
+}
+.btn-log {
+  color: white;
+  background-color: dodgerblue;
+  border-radius: 33px;
+  padding: 10px;
+  outline: none;
+  border: none;
+  margin: 10px;
+}
+.disable {
+  background-color: gray;
+  color: black;
+  border-radius: 33px;
+  padding: 10px;
+  outline: none;
+  border: none;
+  margin: 10px;
+}
+.btn-proceed {
+  padding: 10px;
+  background-color: #eb34bd;
+  color: #fff;
+}
+@media screen and (max-width: 600px) {
+  .gradient-form {
+    height: 100vh;
+  }
+}
+.donate-section {
+  margin-left: 50px;
+}
+.lbl-donate {
+  color: dodgerblue;
+  font-size: 30px;
+  background-color: white;
+}
+section{
+    height:100vh;
+}

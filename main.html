@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <section class="h-100 gradient-form" style="background-color: #eee;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-xl-10">
+                    <div class="card rounded-3 text-black">
+                        <div class="row g-0">
+                            <div class="col-lg-6">
+                                <div class="card-body p-md-5 mx-md-4">
+
+                                    <div class="text-center">
+                                        <img src="./assets/img/donation.png" style="width: 185px;" alt="logo">
+                                        <h4 class="logo mb-5 pb-1">FADHILI</h4>
+                                    </div>
+
+                                    <form>
+                                        <p class="login">Please login to your account</p>
+
+
+                                        <button id="login"
+                                            class="btn-log btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                                            type="button">LOG IN WITH METAMASK </button>
+                                        <div style="margin-top: 20px;" id="join">
+                                            <a id="mainlink" style="display: none;" href="main.html"><button style="padding: 10px;
+    background-color: #eb34bd;
+    color: #fff; border: none; outline: none; font-size: larger; font-weight: bold;">Proceed</button></a>
+                                        </div>
+
+
+                                    </form>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        window.userWalletAddress = null;
+        const userWallet = document.getElementById('userWallet');
+
+        const login = document.getElementById('login');
+
+        function toggleButton() {
+
+            if (!window.ethereum) {
+                login.textContent = "metamask is not installed"
+                login.classList.remove('btn-log');
+                login.classList.add('disable')
+                return false;
+            }
+
+            login.addEventListener('click', loginAccount)
+        }
+
+        async function loginAccount() {
+            const accounts = await window.ethereum.request({ method: "eth_requestAccounts" })
+                .catch((e) => {
+                    console.log(e.message)
+                    return
+                })
+            if (!accounts) { return }
+
+            window.userWalletAddress = accounts[0]
+
+
+            document.getElementById('mainlink').style.display = 'inline'
+            document.getElementById('join').appendChild(proceed)
+            login.disabled = true;
+            login.innerText = "logged in"
+            login.removeEventListener('click')
+            login.addEventListener('click', () => { signOut })
+        }
+        function signOut() {
+            location.href = main.html;
+        }
+        window.addEventListener('DOMContentLoaded', (event) => {
+            toggleButton();
+        });
+    </script>
+</body>
+
+</html>   
