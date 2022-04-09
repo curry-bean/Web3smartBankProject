@@ -1,0 +1,22 @@
+.donate-section {
+    margin-left: 50px;
+    margin-bottom: 50px;
+
+}
+
+.lbl-donate {
+    color: dodgerblue;
+    font-size: 30px;
+    background-color: #ffff;
+    margin-bottom: 50px;
+    font-weight: bolder;
+}
+option{
+    color: dodgerblue;
+    font-weight: bold;
+    border: 5px solid lightblue;
+}
+#h-make-change{
+    display: flex;
+    justify-content: center;
+}
