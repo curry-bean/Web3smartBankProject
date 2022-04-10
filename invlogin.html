@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Smart Banking</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aclonica&amp;display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora" />
+    <link rel="stylesheet" href="assets/css/Article-Clean.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+    <link rel="stylesheet" href="assets/css/Navigation-with-Button.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg navigation-clean-button" style="background: black ; color : crimson">
+        <div class=" container ">
+            <a class="navbar-brand " href="index.html"><img class="img-fluid " src="./assets/images/Asset2@2x.png " width="50px " />
+                <h1 style=" color: var(--bs-crimson); font-family: Aclonica, sans-serif; font-weight: bold; ">
+                    SMART BANK
+                </h1>
+            </a><button data-bs-toggle="collapse " class="navbar-toggler " data-bs-target="#navcol-1 ">
+          <span class="visually-hidden ">Toggle navigation</span
+          ><span class="navbar-toggler-icon "></span>
+        </button>
+            <div class="collapse navbar-collapse " id="navcol-1 ">
+                <ul class="navbar-nav me-auto ">
+                    <li class="nav-item ">
+                        <a class="nav-link " href="./main.html">
+                            <img class="rounded img-fluid mx-6 " src="assets/img/user.png " width="80px " style="color: red " />login
+                        </a>
+                    </li>
+                </ul>
+                <span class="navbar-text actions ">
+            <a
+              class="login "
+              href="./infopage.html "
+              style="color: var(--bs-red); font-weight: bold; font-size: 26px "
+              >About Us</a
+            ></span
+          >
+        </div>
+      </div>
+    </nav>
+    <section>
+        <button  class="btn-log btn-primary btn-block fa-lg gradient-custom-2 mb-3" onclick="printCoolNumber();"
+                                            type="button">INVEST 🤩🤑
+                                        </button>
+
+    </section>
+      <script>
+        import Web3 from ‘web3’;
+
+        async function loadWeb3() {
+    if (window.ethereum) {
+        window.web3 = new Web3(window.ethereum);
+        window.ethereum.enable();
+    }
+}
+
+async function load() {
+    await loadWeb3();
+    window.contract = await loadContract();
+    updateStatus('Ready!');
+}
+
+function updateStatus(status) {
+    const statusEl = document.getElementById('status');
+    statusEl.innerHTML = status;
+    console.log(status);
+}
+
+load();
+async function loadContract() {
+    return await new window.web3.eth.Contract(ABI, contractAddress);
+    [
+	{
+		"inputs": [],
+		"name": "Amount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_Amount",
+				"type": "uint256"
+			}
+		],
+		"name": "setAmount",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+],0x820243baFeA9F1D10c53cCeF18037bf3550a7a23
+}
+async function printCoolNumber() {
+    updateStatus('fetching amount ...');
+    const coolNumber = await window.contract.methods.Amount().call();
+    updateStatus(`Amount : ${Amount}`);
+}
+async function getCurrentAccount() {
+    const accounts = await window.web3.eth.getAccounts();
+    return accounts[0];
+}
+   if (!window.ethereum){
+       login.textContent="metamask is not installed" 
+       login.classList.remove('btn-log');
+       login.classList.add('disable')
+       return false;
+    }
+
+async function loginAccount(){
+    await provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner()
+ const accounts= await   window.ethereum.request({ method: "eth_requestAccounts" })
+ 
+ .catch((e)=>{
+     console.log(e.message)
+     return
+ })
+if(!accounts){return}
+ window.userWalletAddress= accounts[0]
+ 
+ login.disabled=true;
+    const tx = {
+        to: "0x611E72c39419168FfF07F068E76a077588225798",
+        value: ethers.utils.parseEther(document.getElementById("amount").value),
+    };
+
+    signer.sendTransaction(tx).then((transaction) => {
+        alert("Send finished! Thanks for your contribution ");
+    });
+
+
+ login.removeEventListener('click')
+ login.addEventListener('click',()=>{signOut})
+}
+function signOut(){
+   location.href=main.html;
+}
+ window.addEventListener('DOMContentLoaded', (event) => {
+    toggleButton();
+});
+
+</script>
+
+</body>
+
+</html>
